@@ -1,0 +1,33 @@
+--- klvanc-tools-887b50247134b077c903ef813527ea33fa13b6c1/configure.ac.orig	2019-09-10 20:10:45.000000000 +0200
++++ klvanc-tools-887b50247134b077c903ef813527ea33fa13b6c1/configure.ac	2019-11-23 20:35:11.110463032 +0100
+@@ -15,11 +15,11 @@
+ PLAT_PREFIX=Linux
+ if test `uname -s` = "Darwin"
+ then
+-CFLAGS+=" -I/usr/local/include "
+-LDFLAGS+=" -L/usr/local/lib -framework CoreFoundation"
++CFLAGS="$CFLAGS -I/usr/local/include "
++LDFLAGS="$LDFLAGS -L/usr/local/lib -framework CoreFoundation"
+ PLAT_PREFIX=Mac
+ fi
+-CFLAGS+=" -DKL_USERSPACE "
++CFLAGS="$CFLAGS -DKL_USERSPACE "
+ 
+ # We always build with -fPIC in case our static libraries end up
+ # being linked into a consumer's shared library
+@@ -47,13 +47,13 @@
+ # Check for curses (optional)
+ AC_CHECK_HEADERS([curses.h], HEADER_LIBCURSES="yes")
+ if test "x$HEADER_LIBCURSES" == "xyes" ; then
+-    LDFLAGS+=" -lcurses "
++    LIBS="$LIBS -lcurses "
+ fi
+ AM_CONDITIONAL(LIBCURSES, test x"$HEADER_LIBCURSES" == x"yes")
+ 
+ AC_CHECK_HEADERS([libklmonitoring/klmonitoring.h], HEADER_LIBKLMONITORING="yes")
+ if test "x$HEADER_LIBKLMONITORING" == "xyes" ; then
+-    LDFLAGS+=" -lklmonitoring "
++    LIBS="$LIBS -lklmonitoring "
+ fi
+ AM_CONDITIONAL(LIBKLMONITORING, test x"$HEADER_LIBKLMONITORING" == x"yes")
+ 

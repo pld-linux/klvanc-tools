@@ -1,0 +1,8 @@
+--- klvanc-tools-887b50247134b077c903ef813527ea33fa13b6c1/tools/Makefile.am.orig	2019-09-10 20:10:45.000000000 +0200
++++ klvanc-tools-887b50247134b077c903ef813527ea33fa13b6c1/tools/Makefile.am	2019-11-23 19:11:38.477618793 +0100
+@@ -1,3 +1,4 @@
++BLACKMAGIC_SDK_PATH=$(top_srcdir)/include/decklink-sdk
+ 
+-AUTOMAKE_OPTIONS = foreign
++AUTOMAKE_OPTIONS = foreign subdir-objects
+ GIT_VERSION := $(shell git describe --abbrev=8 --dirty --always --tags)
