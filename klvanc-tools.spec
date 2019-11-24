@@ -2,7 +2,7 @@ Summary:	Vertical Ancillary Data (VANC) tools
 Summary(pl.UTF-8):	Narzędzia do danych VANC (Vertical Ancillary Data)
 Name:		klvanc-tools
 Version:	1.0
-%define	rel	1
+%define	rel	2
 %define	snap	20190911
 %define	gitref	887b50247134b077c903ef813527ea33fa13b6c1
 Release:	0.%{snap}.%{rel}
