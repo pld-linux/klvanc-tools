@@ -1,22 +1,25 @@
+# TODO: libklmonitoring, Nielsen decoder SDK (IMonitorSdkProcessor.h, libMonitorSdk ...)?, Blackmagic SDK
 Summary:	Vertical Ancillary Data (VANC) tools
 Summary(pl.UTF-8):	Narzędzia do danych VANC (Vertical Ancillary Data)
 Name:		klvanc-tools
-Version:	1.0
-%define	rel	2
-%define	snap	20190911
-%define	gitref	887b50247134b077c903ef813527ea33fa13b6c1
-Release:	0.%{snap}.%{rel}
+Version:	1.2.0
+Release:	1
 License:	LGPL v2.1
 Group:		Applications/Multimedia
-Source0:	https://github.com/stoth68000/klvanc-tools/archive/%{gitref}/%{name}-%{snap}.tar.gz
-# Source0-md5:	af886529a958f20fafc537bf78f17cf6
+#Source0Download: https://github.com/stoth68000/klvanc-tools/tags
+Source0:	https://github.com/stoth68000/klvanc-tools/archive/v%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	62efa94c9f70076607da572cf2d42630
 Patch0:		%{name}-am.patch
 Patch1:		%{name}-sh.patch
 URL:		https://github.com/stoth68000/klvanc-tools
-BuildRequires:	libklvanc-devel
+BuildRequires:	libklvanc-devel >= 1.2.0
+BuildRequires:	libstdc++-devel >= 6:4.7
 BuildRequires:	libtool
 BuildRequires:	ncurses-devel
-BuildRequires:	zlib-devel
+BuildRequires:	pkgconfig
+BuildRequires:	zlib-devel >= 1.2.9
+Requires:	libklvanc >= 1.2.0
+Requires:	zlib >= 1.2.9
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -34,7 +37,7 @@ Digital Interface (SDI).
 Ten pakiet zawiera narzędzia zbudowane w oparciu o bibliotekę.
 
 %prep
-%setup -q -n %{name}-%{gitref}
+%setup -q
 %patch0 -p1
 %patch1 -p1
 
@@ -61,3 +64,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README.md
 %attr(755,root,root) %{_bindir}/klvanc_capture
+%attr(755,root,root) %{_bindir}/klvanc_transmitter
